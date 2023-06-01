@@ -5,7 +5,7 @@ import LandingPage from '../components/LandingPage/LandingPage';
 
 export default function AppRoutes() {
   return (
-    <Router>
+    <Router basename="/learning-managment-system">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignUp />} />

@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/learning-managment-system/static/css/main.ed2b9e03.css",
-    "main.js": "/learning-managment-system/static/js/main.52e3eaa5.js",
+    "main.js": "/learning-managment-system/static/js/main.52b7ddf1.js",
     "static/media/thir.jpg": "/learning-managment-system/static/media/thir.3409558deb5ea28c2e0d.jpg",
     "static/media/fir.jpg": "/learning-managment-system/static/media/fir.cf33646e01d2d6c59962.jpg",
     "static/media/sign.jpg": "/learning-managment-system/static/media/sign.f566fcfdc241a4f0ee4c.jpg",
@@ -9,10 +9,10 @@
     "static/media/icon5.jpg": "/learning-managment-system/static/media/icon5.9549421ca521cf7c31a7.jpg",
     "index.html": "/learning-managment-system/index.html",
     "main.ed2b9e03.css.map": "/learning-managment-system/static/css/main.ed2b9e03.css.map",
-    "main.52e3eaa5.js.map": "/learning-managment-system/static/js/main.52e3eaa5.js.map"
+    "main.52b7ddf1.js.map": "/learning-managment-system/static/js/main.52b7ddf1.js.map"
   },
   "entrypoints": [
     "static/css/main.ed2b9e03.css",
-    "static/js/main.52e3eaa5.js"
+    "static/js/main.52b7ddf1.js"
   ]
 }

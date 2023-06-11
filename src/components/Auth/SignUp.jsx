@@ -1,6 +1,11 @@
+import React, { useContext, useState } from 'react';
+
 import { Button, Checkbox, Form, Input, Col, Row, Typography } from 'antd';
 import signUpLogo from '../../assets/sign.jpg';
 import { Link } from 'react-router-dom';
+import { Context } from '../../index';
+
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
@@ -43,8 +48,13 @@ const tailFormItemLayout = {
   },
 };
 
-const SignUp = () => (
-  <>
+const SignUp = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { store } = useContext(Context);
+
+  return (
     <Row>
       <Col
         xs={24}
@@ -91,13 +101,45 @@ const SignUp = () => (
               Регистрация
             </Title>
           </Form.Item>
+
+          {/* <Form.Item
+            rules={[
+              {
+                required: true,
+                message: 'Please input your email!',
+              },
+            ]}>
+            <Input
+              prefix={<UserOutlined />}
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Item>
+
+          <Form.Item
+            rules={[
+              {
+                required: true,
+                message: 'Please input your password!',
+              },
+            ]}
+            hasFeedback>
+            <Input.Password
+              prefix={<LockOutlined />}
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Item> */}
+
           <Form.Item
             label="Имя"
             name="name"
             rules={[
               {
                 required: true,
-                message: 'Please input your name!',
+                message: 'Please input your email!',
               },
             ]}>
             <Input />
@@ -116,9 +158,11 @@ const SignUp = () => (
           </Form.Item>
 
           <Form.Item
-            name="nickname"
-            label="Логин"
-            tooltip="What do you want others to call you?"
+            name="email"
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            // tooltip="What do you want others to call you?"
             rules={[
               {
                 required: true,
@@ -132,6 +176,8 @@ const SignUp = () => (
           <Form.Item
             name="password"
             label="Пароль"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             rules={[
               {
                 required: true,
@@ -180,7 +226,10 @@ const SignUp = () => (
           </Form.Item>
 
           <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              onClick={() => store.registration(email, password)}>
               Регистрация
             </Button>
 
@@ -191,6 +240,6 @@ const SignUp = () => (
         </Form>
       </Col>
     </Row>
-  </>
-);
+  );
+};
 export default SignUp;

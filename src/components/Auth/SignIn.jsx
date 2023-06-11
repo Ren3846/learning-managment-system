@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Form, Input, Col, Row, Typography } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import signInLogo from '../../assets/sign.jpg';
-
+import { Context } from '../../index';
 const { Title } = Typography;
 
 const onFinish = (values) => {
@@ -35,18 +35,10 @@ const formItemLayout = {
 };
 
 const SignIn = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
-  const signIn = () => {
-    if (username === 'fakeuser' && password === 'fakepassword') {
-      localStorage.setItem('auth', username);
-      navigate('/');
-    } else {
-      // Настоящий логин
-    }
-  };
+  const { store } = useContext(Context);
 
   return (
     <Row>
@@ -99,14 +91,14 @@ const SignIn = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your name!',
+                message: 'Please input your email!',
               },
             ]}>
             <Input
               prefix={<UserOutlined />}
-              placeholder="Логин"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Item>
 
@@ -127,7 +119,7 @@ const SignIn = () => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" onClick={signIn}>
+            <Button type="primary" htmlType="submit" onClick={() => store.login(email, password)}>
               Войти
             </Button>
 

@@ -88,6 +88,9 @@ const SignIn = () => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}>
           <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : 'АВТОРИЗУЙТЕСЬ'}</h1>
+          <Button type="primary" htmlType="submit" onClick={() => store.logout()}>
+            Выйти
+          </Button>
 
           <Form.Item>
             <Title

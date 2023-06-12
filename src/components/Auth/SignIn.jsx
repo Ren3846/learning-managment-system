@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button, Form, Input, Col, Row, Typography } from 'antd';
@@ -6,6 +6,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import signInLogo from '../../assets/sign.jpg';
 import { Context } from '../../index';
+import { observer } from 'mobx-react-lite';
 const { Title } = Typography;
 
 const onFinish = (values) => {
@@ -39,6 +40,12 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
 
   const { store } = useContext(Context);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      store.checkAuth();
+    }
+  }, []);
 
   return (
     <Row>
@@ -80,6 +87,8 @@ const SignIn = () => {
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}>
+          <h1>{store.isAuth ? `Пользователь авторизован ${store.user.email}` : 'АВТОРИЗУЙТЕСЬ'}</h1>
+
           <Form.Item>
             <Title
               level={3}
@@ -140,4 +149,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default observer(SignIn);

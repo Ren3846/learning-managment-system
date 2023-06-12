@@ -5,8 +5,6 @@ import signUpLogo from '../../assets/sign.jpg';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-
 const { Title } = Typography;
 
 const onFinish = (values) => {
